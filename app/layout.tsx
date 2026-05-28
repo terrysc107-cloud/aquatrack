@@ -1,56 +1,79 @@
-import type { Metadata, Viewport } from 'next'
+import type { Metadata } from 'next'
 import { Inter, Playfair_Display } from 'next/font/google'
-import { Analytics } from '@vercel/analytics/next'
+import { Analytics } from '@vercel/analytics/react'
 import './globals.css'
 
-const inter = Inter({ 
-  subsets: ["latin"],
-  variable: '--font-inter'
-});
+const inter = Inter({
+  subsets: ['latin'],
+  variable: '--font-inter',
+  display: 'swap',
+})
 
-const playfair = Playfair_Display({ 
-  subsets: ["latin"],
-  variable: '--font-playfair'
-});
+const playfair = Playfair_Display({
+  subsets: ['latin'],
+  variable: '--font-playfair',
+  display: 'swap',
+})
 
 export const metadata: Metadata = {
-  title: 'Clarix Analytics | Water Quality Intelligence for Sterile Processing',
-  description: 'ANSI/AAMI ST108:2023 compliant water quality monitoring, validation, and investigative analysis designed specifically for sterile processing departments by certified SPD professionals.',
-  keywords: ['water quality', 'sterile processing', 'SPD', 'AAMI ST108', 'healthcare', 'hospital', 'WQMP', 'endotoxin testing'],
-  authors: [{ name: 'Terry Scott', url: 'mailto:terry@clarixanalytics.net' }],
+  title: 'Clarix Analytics | AAMI ST108 Water Quality Consulting for SPDs',
+  description:
+    'ANSI/AAMI ST108:2023 compliant water quality monitoring and validation for sterile processing departments. Expert consulting from CRCST-certified SPD leaders.',
+  metadataBase: new URL('https://clarixanalytics.net'),
+  keywords: [
+    'AAMI ST108',
+    'water quality management',
+    'sterile processing',
+    'SPD consulting',
+    'WQMP',
+    'water quality management plan',
+    'CRCST',
+    'ASSE 12080',
+  ],
+  openGraph: {
+    type: 'website',
+    url: 'https://clarixanalytics.net',
+    title: 'Clarix Analytics | AAMI ST108 Water Quality Consulting for SPDs',
+    description:
+      'ANSI/AAMI ST108:2023 compliant water quality monitoring and validation for sterile processing departments.',
+    siteName: 'Clarix Analytics',
+    images: [
+      {
+        url: '/clarix-logo.png',
+        width: 1200,
+        height: 630,
+        alt: 'Clarix Analytics',
+      },
+    ],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Clarix Analytics | AAMI ST108 Water Quality Consulting',
+    description:
+      'Expert AAMI ST108:2023 water quality consulting for sterile processing departments.',
+    images: ['/clarix-logo.png'],
+  },
   icons: {
     icon: [
-      {
-        url: '/icon-light-32x32.png',
-        media: '(prefers-color-scheme: light)',
-      },
-      {
-        url: '/icon-dark-32x32.png',
-        media: '(prefers-color-scheme: dark)',
-      },
-      {
-        url: '/icon.svg',
-        type: 'image/svg+xml',
-      },
+      { url: '/icon-dark-32x32.png', sizes: '32x32', type: 'image/png' },
+      { url: '/icon.svg', type: 'image/svg+xml' },
     ],
     apple: '/apple-icon.png',
   },
 }
 
-export const viewport: Viewport = {
-  themeColor: '#0D1F35',
-  width: 'device-width',
-  initialScale: 1,
-}
-
 export default function RootLayout({
   children,
-}: Readonly<{
+}: {
   children: React.ReactNode
-}>) {
+}) {
   return (
-    <html lang="en" className="scroll-smooth">
-      <body className={`${inter.variable} ${playfair.variable} font-sans antialiased bg-background text-foreground`}>
+    <html
+      lang="en"
+      className={`${inter.variable} ${playfair.variable} dark`}
+      suppressHydrationWarning
+    >
+      <body className="min-h-screen bg-background text-foreground antialiased">
         {children}
         <Analytics />
       </body>
