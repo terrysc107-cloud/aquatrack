@@ -1,25 +1,33 @@
-import { Navigation } from "@/components/navigation"
-import { HeroSection } from "@/components/hero-section"
-import { WhyClarixSection } from "@/components/why-clarix-section"
-import { HowItWorksSection } from "@/components/how-it-works-section"
-import { ServicesSection } from "@/components/services-section"
-import { IssueResponseSection } from "@/components/issue-response-section"
-import { HowWeBeginSection } from "@/components/how-we-begin-section"
-import { ContactSection } from "@/components/contact-section"
-import { Footer } from "@/components/footer"
+import Navbar from '@/components/layout/Navbar'
+import Footer from '@/components/layout/Footer'
+import HeroSection from '@/components/sections/HeroSection'
+import WhyClarixSection from '@/components/sections/WhyClarixSection'
+import ServicesSection from '@/components/sections/ServicesSection'
+import HowItWorksSection from '@/components/sections/HowItWorksSection'
+import HowWeBeginSection from '@/components/sections/HowWeBeginSection'
+import IssueResponseSection from '@/components/sections/IssueResponseSection'
+import FounderSection from '@/components/sections/FounderSection'
+import GapAnalysisSection from '@/components/sections/GapAnalysisSection'
+import FAQSection from '@/components/sections/FAQSection'
+import ContactSection from '@/components/sections/ContactSection'
 
 export default function Home() {
   return (
-    <main className="min-h-screen bg-[#050505]">
-      <Navigation />
-      <HeroSection />
-      <WhyClarixSection />
-      <HowItWorksSection />
-      <ServicesSection />
-      <IssueResponseSection />
-      <HowWeBeginSection />
-      <ContactSection />
+    <>
+      <Navbar />
+      <main>
+        <HeroSection />
+        <WhyClarixSection />
+        <ServicesSection />
+        <HowItWorksSection />
+        <HowWeBeginSection />
+        <IssueResponseSection />
+        <FounderSection />
+        <GapAnalysisSection />
+        <FAQSection />
+        <ContactSection />
+      </main>
       <Footer />
-    </main>
+    </>
   )
 }
